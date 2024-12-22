@@ -1,6 +1,6 @@
 ---
 title: TryHackMe:Vulnversity Walkthrough
-date: 2024-01-03 11:33:00 +0800
+date: 2024-12-22 18:41:00 +0800
 categories: [TryHackMe]
 tags: [TryHackMe,Walkthrought]
 image:

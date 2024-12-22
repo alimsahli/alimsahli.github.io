@@ -3,12 +3,14 @@ title: Vulnversity Walkthrough
 date: 2024-01-03 11:33:00 +0800
 categories: [Walkthrough]
 tags: [TryHackMe]
+image:
+  path: /images/vulnv/vuln.png
 ---
 
 ## Task 1 Deploy Machine
 
-Deploy the victim machine
-Connect the attacking machine with OpenVPN
+Deploy the machine
+
 
 ## Task 2 Reconnaissance 
 
@@ -19,27 +21,27 @@ nmap -sV 10.10.160
   <img src="/images/vulnv/vuln1.png" alt="Securinets" style="width: auto; height: auto; margin-right: 10%;" />
 
 ### Q1: Scan the box; how many ports are open?
-Answer: 6
+#### Answer: 6
 
 ### Q2: What version of the squid proxy is running on the machine?
 
-Answer: 3.5.12
+#### Answer: 3.5.12
 
 ### Q3: How many ports will Nmap scan if the flag -p-400 was used?
 
-Answer: 400
+#### Answer: 400
 
 ### Q4: What is the most likely operating system this machine is running?
 
-Answer: Ubuntu
+#### Answer: Ubuntu
 
 ### Q5: What port is the web server running on?
 
-Answer: 3333
+#### Answer: 3333
 
 ### Q6: What is the flag for enabling verbose mode using Nmap?
 
-Answer: -v
+#### Answer: -v
 
 ## Task 3 Locating directories using Gobuster
 
@@ -60,13 +62,13 @@ gobuster dir -u http://[Machine_IP]:3333 -w directory-list-1.0.txt
 
 ### Q1: What is the directory that has an upload form page?
 
-Answer: /internal/
+#### Answer: /internal/
 
 ## Task 4 Compromise the Webserver
 
 ### Q1: What common file type you’d want to upload to exploit the server is blocked? Try a couple to find out.
 
-Answer: .php
+#### Answer: .php
 
 Intercept the POST request with burpsuite
 
@@ -96,7 +98,7 @@ We can see that the .phtml is accepted as input
 
 ### Q2: What extension is allowed after running the above exercise?
 
-Answer: .phtml
+#### Answer: .phtml
 
 Now we need to install the reverse shell script
 
@@ -126,22 +128,24 @@ ls
 cd home
 ls
 ```
+
   <img src="/images/vulnv/vuln12.png" alt="Securinets" style="width: auto; height: auto; margin-right: 10%;" />
 
 ### Q3: What is the name of the user who manages the webserver?
 
-Answer: bill
+#### Answer: bill
 ```bash
 cd bill
 ls
 cat user.txt
 ```
 Now we navigate to bill directory and look for the flag
+
   <img src="/images/vulnv/vuln13.png" alt="Securinets" style="width: auto; height: auto; margin-right: 10%;" />
 
 ### Q4: What is the user flag?
 
-Answer: 8bd7992fbe8a6ad22a63361004cfcedb
+#### Answer: 8bd7992fbe8a6ad22a63361004cfcedb
 
 ## Task 5 Privilege Escalation
 Since we already have a shell in the machine, we will use it now to find files that have root privilege
@@ -154,7 +158,7 @@ find / -perm -u=s -exec ls -l {} \; 2>/dev/null
 
 ### Q1: On the system, search for all SUID files. Which file stands out?
 
-Answer: /bin/systemctl
+#### Answer: /bin/systemctl
 
 What is systemctl ?
 systemctl control the systemd system and service manager
@@ -218,4 +222,4 @@ cat root.txt
 
 ### Q2: What is the root flag value?
 
-Answer: a58ff8579f0a9270368d33a9966c7fd5
+#### Answer: a58ff8579f0a9270368d33a9966c7fd5

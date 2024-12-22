@@ -18,10 +18,7 @@ I'm Ali Msahli, a passionate **Network Infrastructure & Data Security Engineerin
   - [Codédex The Legend Of Python](https://www.codedex.io/certificates/bee76d18-6dfb-45fc-ae65-ffbce99cef4c)
   - [Codio Unix Sytem Basics](https://www.coursera.org/account/accomplishments/certificate/DNPSDV84V82Q)
   - [Google The Bits And Bytes Of Computer Networking](https://www.coursera.org/account/accomplishments/certificate/5SNFVAN7EKNS)
-  <div style="text-align: center; width: 100%;"> 
-  <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="dcd2921a-a7bc-4db8-9a8f-b24a49d03047" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-  <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="396b702c-f48a-43b1-ae8c-c3277d8d25e2" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-</div>
+
 ## Community Involvement
 As an active member of **Securinets TekUp**, I design CTF challenges and organize cybersecurity workshops to inspire others in the field.
 

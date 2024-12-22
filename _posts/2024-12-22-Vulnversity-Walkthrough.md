@@ -1,8 +1,8 @@
 ---
-title: Vulnversity Walkthrough
+title: TryHackMe:Vulnversity Walkthrough
 date: 2024-01-03 11:33:00 +0800
-categories: [Walkthrough]
-tags: [TryHackMe]
+categories: [TryHackMe]
+tags: [TryHackMe,Walkthrought]
 image:
   path: /images/vulnv/vuln.png
 ---

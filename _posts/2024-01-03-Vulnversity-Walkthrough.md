@@ -57,3 +57,12 @@ gobuster dir -u http://[Machine_IP]:3333 -w directory-list-1.0.txt
 
 Answer: /internal/
 
+## Task 4 Compromise the Webserver
+
+### Q1: What common file type you’d want to upload to exploit the server is blocked? Try a couple to find out.
+
+Answer: .php
+
+Intercept the POST request with burpsuite
+
+  <img src="/images/vulnv/vuln3.png" alt="Securinets" style="width: auto; height: auto; margin-right: 10%;" />

@@ -19,7 +19,6 @@ I'm Ali Msahli, a passionate **Network Infrastructure & Data Security Engineerin
   - [Codio Unix Sytem Basics](https://www.coursera.org/account/accomplishments/certificate/DNPSDV84V82Q)
   - [Google The Bits And Bytes Of Computer Networking](https://www.coursera.org/account/accomplishments/certificate/5SNFVAN7EKNS)
 
-
 ## Community Involvement
 As an active member of **Securinets TekUp**, I design CTF challenges and organize cybersecurity workshops to inspire others in the field.
 

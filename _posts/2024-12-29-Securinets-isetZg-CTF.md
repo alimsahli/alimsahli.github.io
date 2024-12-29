@@ -4,7 +4,7 @@ date: 2024-12-29 18:36:00 +0800
 categories: [CTF]
 tags: [CTF,Securinets,Cryptography]
 image:
-  path: /images/isetzgctf/pdpp.png
+  path: /images/isetzgctf/pdp.png
 ---
 ## TASK 
 

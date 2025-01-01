@@ -4,7 +4,7 @@ date: 2025-01-01 02:00:00 +0800
 categories: [Forensics]
 tags: [CTF,Securinets]
 image:
-  path: /images/tekup/sectekup.jpg
+  path: /images/tekup/Forensics.png
 ---
 ## TASK 
 

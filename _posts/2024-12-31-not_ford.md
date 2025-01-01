@@ -4,7 +4,7 @@ date: 2024-12-31 19:00:00 +0800
 categories: [OSINT]
 tags: [CTF,Securinets]
 image:
-  path: /images/tekup/sectekup.jpg
+  path: /images/tekup/OSINT.png
 ---
 ## TASK 
 

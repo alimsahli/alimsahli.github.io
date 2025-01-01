@@ -1,6 +1,6 @@
 ---
 title: Securinets Tekup mini-CTF:PCAP Master
-date: 2025-01-01 01:00:00 +0800
+date: 2025-01-01 02:00:00 +0800
 categories: [Forensics]
 tags: [CTF,Securinets]
 image:
@@ -34,7 +34,7 @@ http.request.method==GET or http.request.method==POST
 
 As we can see we have three GET requests one of them is for an executable file but first we need to confirm if this file is malicious 
 we can export the file by clicking on file > Export Objects > HTTP > (choose putingods.exe) > Save
-After downloading the file we need to get it's hash to look for it on virustotal
+After downloading the file we need to get it's hash to look for it on [virustotal](https://www.virustotal.com/gui/)
 ```bash
 md5sum putingods.exe
 ```
@@ -47,7 +47,7 @@ Now since we confirmed that this is the malicious file we are looking for we nee
 
   <img src="/images/tekup/pcap_master/mac.png" alt="Securinets" style="width: auto; height: auto; margin-right: 10%;" />
 
-Now we have all netcat answers except for the family name of the malware, we need to get back to virustotal to get it 
+Now we have all netcat answers except for the family name of the malware, we need to get back to [virustotal](https://www.virustotal.com/gui/) to get it 
 
   <img src="/images/tekup/pcap_master/name.png" alt="Securinets" style="width: auto; height: auto; margin-right: 10%;" />
 

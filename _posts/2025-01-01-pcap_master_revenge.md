@@ -29,8 +29,7 @@ Right click > Folllow > TCP Stream
 
   <img src="/images/tekup/PCAP_Master_Revenge/three.png" alt="Securinets" style="width: auto; height: auto; margin-right: 10%;" />
 
-Now we can answer the three first questions
-For the last question "What's the malicious threat category" we need to understand what happend after this connection
+Now we can answer the three first questions, For the last question "What's the malicious threat category" we need to understand what happend after this connection
 
   <img src="/images/tekup/PCAP_Master_Revenge/data.png" alt="Securinets" style="width: auto; height: auto; margin-right: 10%;" />
 

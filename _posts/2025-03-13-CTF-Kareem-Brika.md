@@ -1,6 +1,6 @@
 ---
 title: Securinets Tekup CTF Kareem:Brika
-date: 2025-01-01 02:00:00 +0800
+date: 2025-01-01 
 categories: [Forensics]
 tags: [CTF,Securinets]
 image:
@@ -139,7 +139,7 @@ b0c1133c8e8d4d7c359249d4e3208cb5
 ## Flag
 
   <img src="/images/ctfKareem/brika/flag.png" alt="Securinets" style="width: auto; height: auto; margin-right: 10%;" />
-  
+
 Flag
 ```
 Securinets{Y0u_D3serV3_4_Br1KA}

@@ -3,7 +3,7 @@
 icon: fas fa-info-circle
 order: 4
 ---
-<img src="/images/cybermaze.jpg" alt="Securinets" style="width: auto; height: auto; margin-right: 10%;" />
+<img src="/images/banner.jpg" alt="Securinets" style="width: auto; height: auto; margin-right: 10%;" />
 
 # WHOAMI
 
@@ -24,7 +24,7 @@ As an active member of **Securinets TekUp**, I design CTF challenges and organiz
 
 <div style="text-align: center; width: 100%;">
   <img src="/images/securinets.jpg" alt="Securinets" style="width: auto; height: 120px; margin-right: 10%;border-radius:60px;" />
-  <img src="https://tryhackme-badges.s3.amazonaws.com/alimsahli.png" alt="Your Image Badge"  style="width: auto; height: 120px; margin-right: 10%;"/>
+  <img src="https://tryhackme-badges.s3.amazonaws.com/AL1D0cs.png" alt="Your Image Badge"  style="width: auto; height: 120px; margin-right: 10%;"/>
 
 </div>
 

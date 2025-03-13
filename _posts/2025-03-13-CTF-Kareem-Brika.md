@@ -1,6 +1,6 @@
 ---
 title: Securinets Tekup CTF Kareem:Brika
-date: 2025-01-01 
+date: 2025-01-01 18:00:00 +0800
 categories: [Forensics]
 tags: [CTF,Securinets]
 image:

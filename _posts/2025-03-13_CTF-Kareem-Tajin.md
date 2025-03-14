@@ -1,6 +1,6 @@
 ---
-title: Securinets Tekup CTF Kareem:Tajin
-date: 2025-03-14 18:00:00 +0800
+title: Securinets Tekup CTF Kareem:Tajin b sebnekh
+date: 2025-03-13 18:00:00 +0800
 categories: [Forensics]
 tags: [CTF,Securinets]
 image:

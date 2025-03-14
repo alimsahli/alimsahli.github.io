@@ -66,13 +66,12 @@ we need to create a script using scapy to extract the data from these packets
 from scapy.all import rdpcap, TCP, Raw
 
 def extract_tcp_data_to_txt(pcap_file, output_txt="extracted_tcp_stream_0.txt"):
-    packets = rdpcap(pcap_file)  # Read packets from PCAP
+    packets = rdpcap(pcap_file)  
     extracted_text = ""
 
     for pkt in packets:
         if pkt.haslayer(TCP) and pkt.haslayer(Raw):
-            extracted_text += pkt[Raw].load.decode(errors="ignore")  # Extract TCP payload
-
+            extracted_text += pkt[Raw].load.decode(errors="ignore")  
     with open(output_txt, "w", encoding="utf-8") as output_file:
         output_file.write(extracted_text)
 

@@ -32,7 +32,7 @@ Decrypting it we can see the content of this file
 
 <img src="/images/ctfKareem/tajin/p5.png" alt="Securinets" style="width: auto; height: auto; margin-right: 10%;" />
 
-```
+```python
 
 files = []
 
@@ -62,7 +62,7 @@ Here we have all tcp packets in the pcap file.
 
 we need to create a script using scapy to extract the data from these packets 
 
-```
+```python
 from scapy.all import rdpcap, TCP, Raw
 
 def extract_tcp_data_to_txt(pcap_file, output_txt="extracted_tcp_stream_0.txt"):
@@ -95,7 +95,7 @@ gAAAAABnzwQWxZ-oI4GMoK-QvIelxxIpS6lzj5yKkcVXGOqD8PBr1v4cXBjqrxHfwgcmn4euxTWAfBDx
 ```
 here is the decyption script 
 
-```
+```python
 import hashlib
 import base64
 from cryptography.fernet import Fernet, InvalidToken

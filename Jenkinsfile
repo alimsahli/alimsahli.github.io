@@ -7,14 +7,25 @@ pipeline {
                    NPM BUILD (instead of Maven)
         ====================================================== */
 
-        stage('NPM Build') {
+        stage('Jekyll Build') {
             steps {
+                // Install Ruby, Bundler (if not installed), then build the site
                 sh '''
-                    npm install
-                    npm run build
+                # Install bundler if not present
+                gem install bundler || true
+
+                # Install Ruby/Gem dependencies
+                bundle install
+
+                # Initialize chirpy (if needed)
+                bash tools/init.sh || true
+
+                # Build the Jekyll site
+                JEKYLL_ENV=production bundle exec jekyll build --destination _site
                 '''
             }
         }
+
 
         /* ======================================================
                           SECRET SCAN (Gitleaks)

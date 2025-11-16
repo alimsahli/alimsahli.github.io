@@ -9,19 +9,19 @@ pipeline {
         ====================================================== */
         stage('Jekyll Build') {
             steps {
-                // Use a standard 'docker run' command instead of the 'docker' DSL
+                // We use the standard 'ruby:3.2' image instead of 'ruby:3.2-slim'
+                // to ensure development tools are present for native gem compilation.
                 sh '''
                 echo "--- Running inside Ruby Docker container (via docker run) ---"
                 
-                # Run all necessary commands inside the Docker container
-                docker run --rm \
-                -v $WORKSPACE:/srv/jekyll \
-                -w /srv/jekyll \
-                ruby:3.2-slim \
+                docker run --rm \\
+                -v $WORKSPACE:/srv/jekyll \\
+                -w /srv/jekyll \\
+                ruby:3.2 \\
                 bash -c "
-                    gem install bundler && \
-                    bundle install && \
-                    bash tools/init.sh && \
+                    gem install bundler && \\
+                    bundle install && \\
+                    bash tools/init.sh && \\
                     JEKYLL_ENV=production bundle exec jekyll build --destination _site
                 "
                 '''

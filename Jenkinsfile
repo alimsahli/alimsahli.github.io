@@ -9,21 +9,24 @@ pipeline {
         ====================================================== */
         stage('Jekyll Build') {
             steps {
-                // 2. Wrap the steps that need Ruby/Bundler inside docker.withRegistry/docker.image.inside
-                script {
-                    docker.image('ruby:3.2-slim').inside('-u root') {
-                        sh '''
-                        echo "--- Running inside Ruby Docker container ---"
-                        gem install bundler || true
-                        bundle install
-                        bash tools/init.sh || true
-                        JEKYLL_ENV=production bundle exec jekyll build --destination _site
-                        '''
-                    }
-                }
+                // Use a standard 'docker run' command instead of the 'docker' DSL
+                sh '''
+                echo "--- Running inside Ruby Docker container (via docker run) ---"
+                
+                # Run all necessary commands inside the Docker container
+                docker run --rm \
+                -v $WORKSPACE:/srv/jekyll \
+                -w /srv/jekyll \
+                ruby:3.2-slim \
+                bash -c "
+                    gem install bundler && \
+                    bundle install && \
+                    bash tools/init.sh && \
+                    JEKYLL_ENV=production bundle exec jekyll build --destination _site
+                "
+                '''
             }
         }
-
 
         /* ======================================================
             SECRET SCAN (Gitleaks)

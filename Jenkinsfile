@@ -1,14 +1,7 @@
 pipeline {
     // 1. Set the Docker agent for the whole pipeline
     // This provides a consistent environment with Ruby/Bundler pre-installed.
-    agent {
-        docker {
-            image 'ruby:3.2-slim'
-            // Using 'latest' or a specific version like '3.2-slim' is best practice.
-            // Add -u root if you encounter permission issues during cleanup or file access.
-            args '-u root' 
-        }
-    }
+    agent any
 
     stages {
 
@@ -18,21 +11,18 @@ pipeline {
 
         stage('Jekyll Build') {
             steps {
-                // Since the agent is a Ruby image, Ruby is already installed.
-                // We just need to ensure bundler is present and dependencies are installed.
-                sh '''
-                # Install bundler if not present (the gem command is now available)
-                gem install bundler || true
-
-                # Install Ruby/Gem dependencies based on your Gemfile
-                bundle install
-
-                # Initialize chirpy (if needed)
-                bash tools/init.sh || true
-
-                # Build the Jekyll site
-                JEKYLL_ENV=production bundle exec jekyll build --destination _site
-                '''
+                // 2. Wrap the steps that need Ruby/Bundler inside docker.withRegistry/docker.image.inside
+                script {
+                    docker.image('ruby:3.2-slim').inside('-u root') {
+                        sh '''
+                        echo "--- Running inside Ruby Docker container ---"
+                        gem install bundler || true
+                        bundle install
+                        bash tools/init.sh || true
+                        JEKYLL_ENV=production bundle exec jekyll build --destination _site
+                        '''
+                    }
+                }
             }
         }
 

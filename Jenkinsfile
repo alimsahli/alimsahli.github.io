@@ -8,7 +8,6 @@ pipeline {
         /* ======================================================
             JEKYLL BUILD 
         ====================================================== */
-
         stage('Jekyll Build') {
             steps {
                 // 2. Wrap the steps that need Ruby/Bundler inside docker.withRegistry/docker.image.inside

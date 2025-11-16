@@ -1,20 +1,30 @@
 pipeline {
-    agent any
+    // 1. Set the Docker agent for the whole pipeline
+    // This provides a consistent environment with Ruby/Bundler pre-installed.
+    agent {
+        docker {
+            image 'ruby:3.2-slim'
+            // Using 'latest' or a specific version like '3.2-slim' is best practice.
+            // Add -u root if you encounter permission issues during cleanup or file access.
+            args '-u root' 
+        }
+    }
 
     stages {
 
         /* ======================================================
-                   NPM BUILD (instead of Maven)
+            JEKYLL BUILD 
         ====================================================== */
 
         stage('Jekyll Build') {
             steps {
-                // Install Ruby, Bundler (if not installed), then build the site
+                // Since the agent is a Ruby image, Ruby is already installed.
+                // We just need to ensure bundler is present and dependencies are installed.
                 sh '''
-                # Install bundler if not present
+                # Install bundler if not present (the gem command is now available)
                 gem install bundler || true
 
-                # Install Ruby/Gem dependencies
+                # Install Ruby/Gem dependencies based on your Gemfile
                 bundle install
 
                 # Initialize chirpy (if needed)
@@ -28,17 +38,18 @@ pipeline {
 
 
         /* ======================================================
-                          SECRET SCAN (Gitleaks)
+            SECRET SCAN (Gitleaks)
         ====================================================== */
 
         stage('SECRET SCAN (Gitleaks via Docker)') {
             steps {
+                // This stage still uses its own ephemeral Docker container for Gitleaks.
                 sh 'docker run --rm -v $WORKSPACE:/app -w /app zricethezav/gitleaks:latest detect --source=. --report-path=gitleaks-report.json --exit-code 0'
             }
         }
 
         /* ======================================================
-                      CHECK FOR FORBIDDEN .env
+            CHECK FOR FORBIDDEN .env
         ====================================================== */
 
         stage('Security Check: Forbidden .env File') {
@@ -54,10 +65,12 @@ pipeline {
         }
 
         /* ======================================================
-                           SONARQUBE SCAN
+            SONARQUBE SCAN
         ====================================================== */
 
         stage('SONARQUBE SCAN') {
+            // Note: Your Jenkins agent must have the 'sonar-scanner' command available,
+            // or you must use a Docker container for this step too.
             environment {
                 SONAR_HOST_URL = 'http://192.168.50.4:9000/'
                 SONAR_AUTH_TOKEN = credentials('sonarqube')
@@ -65,11 +78,11 @@ pipeline {
             steps {
                 sh '''
                     sonar-scanner \
-                      -Dsonar.projectKey=portfolio \
-                      -Dsonar.projectName=portfolio \
-                      -Dsonar.sources=. \
-                      -Dsonar.host.url=$SONAR_HOST_URL \
-                      -Dsonar.login=$SONAR_AUTH_TOKEN
+                     -Dsonar.projectKey=portfolio \
+                     -Dsonar.projectName=portfolio \
+                     -Dsonar.sources=. \
+                     -Dsonar.host.url=$SONAR_HOST_URL \
+                     -Dsonar.login=$SONAR_AUTH_TOKEN
                 '''
             }
         }
@@ -83,7 +96,7 @@ pipeline {
         }
 
         /* ======================================================
-                           TRIVY SCAN (SCA)
+            TRIVY SCAN (SCA)
         ====================================================== */
 
         stage('DEPENDENCY SCAN (SCA - Trivy via Docker)') {
@@ -121,19 +134,20 @@ pipeline {
         }
 
         /* ======================================================
-                     DOCKER IMAGE CREATION (Nginx)
+            DOCKER IMAGE CREATION (Nginx)
         ====================================================== */
 
         stage('IMAGE CREATION') {
             steps {
                 echo "Building image alimsahlibw/portfolio:latest"
+                // NOTE: The Jenkins agent (the host running the Ruby container) must have Docker installed here.
                 sh 'docker build -t alimsahlibw/portfolio:latest .'
                 sh 'docker image prune -f'
             }
         }
 
         /* ======================================================
-                          DOCKER HUB PUSH
+            DOCKER HUB PUSH
         ====================================================== */
 
         stage('DOCKER HUB PUSH') {
@@ -148,7 +162,7 @@ pipeline {
         }
 
         /* ======================================================
-                      OWASP ZAP BASELINE SCAN (DAST)
+            OWASP ZAP BASELINE SCAN (DAST)
         ====================================================== */
 
         stage('OWASP ZAP SCAN (DAST)') {
@@ -198,7 +212,7 @@ pipeline {
     }
 
     /* ======================================================
-                        POST ACTIONS (EMAIL)
+        POST ACTIONS (EMAIL)
     ====================================================== */
 
     post {
